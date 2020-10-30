@@ -33,6 +33,7 @@
         onUserInput();
         onUserInput();
         console.log(declareWinner());
+        
         function declareWinner() {
           if (playerScore===computerScore) {
             alert(playerScore + '-' + computerScore + '\nTie game!');
@@ -45,10 +46,6 @@
             return playerScore + '-' + computerScore + '\nYou lost. Better luck next time!';
           }
         }
-      }
-
-      function getInput() {
-        playerSelection = prompt('Rock, Paper, or Scissors?', '');
       }
       
       function onUserInput() {
