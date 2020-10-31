@@ -11,9 +11,6 @@
           'Paper',
           'Scissors'
       ];
-
-      let computerScore;
-      let playerScore;
       
       function computerPlay() {
         return myArray[~~(Math.random()*myArray.length)]
@@ -21,17 +18,17 @@
 
       let computerSelection;
       let playerSelection;
+      let computerScore;
+      let playerScore;
       
       game();
 
       function game () {
         computerScore=0;
         playerScore=0;
-        onUserInput();
-        onUserInput();
-        onUserInput();
-        onUserInput();
-        onUserInput();
+        for (let i=0; i<5; i++) {
+          onUserInput();
+        }
         console.log(declareWinner());
         
         function declareWinner() {
