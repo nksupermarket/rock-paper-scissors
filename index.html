@@ -3,105 +3,53 @@
   <head>
     <title>Rock Paper Scissors</title>
     <meta charset="UTF-8" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lacquer&family=Roboto&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <button id="rock">Rock</button>
-    <button id="paper">Paper</button>
-    <button id="scissors">Scissors</button>
-    <div id="container">
-      <div id="player-score">0</div>
-      <div id="computer-score">0</div>
+    <main id="main-content">
+      <h1 id="title">Man vs Computer</h1>
+      <p class="desc animate" id="desc1">
+        Machines are threatening to take over the world...
+      </p>
+      <p class="desc disappear" id="desc2">
+        Unless a human can beat them in a game of rock paper scissors, first to
+        5...
+      </p>
+      <p class="desc disappear" id="desc3">
+        Do you have what it takes to save mankind?
+      </p>
+      <div id="game-container">
+        <p id="cta">Choose your weapon!</p>
+        <div id="btn-container">
+          <div id="rock" class="button">
+            <img src="cave-painting.png" alt="Rock" />
+          </div>
+          <div id="paper" class="button">
+            <img src="document.png" alt="Paper" />
+          </div>
+          <div id="scissors" class="button">
+            <img src="scissors-opened-tool-shape.png" alt="Scissors" />
+          </div>
+        </div>
+        <div id="score-label">
+          <p class="label">human</p>
+          <p class="label">computer</p>
+        </div>
+        <div id="score-container">
+          <div id="player-score" class="score">0</div>
+          <div id="computer-score" class="score">0</div>
+        </div>
+        <div id="results-container"></div>
+      </div>
+    </main>
+    <div id="end-alert" class="disappear">
+      <div id="end-desc"></div>
+      <button id="retry-btn"></button>
     </div>
-    <script>
-      let computerSelection;
-      let playerSelection;
-      let computerScore = 0;
-      let playerScore = 0;
-
-      let buttons = document.querySelectorAll("button");
-
-      buttons.forEach((button) => {
-        button.addEventListener("click", () => {
-          playerSelection = button.innerText.toLowerCase();
-          playRound(playerSelection, computerSelection);
-
-          if (playerScore === 5 || computerScore === 5) {
-            declareWinner();
-          }
-        });
-      });
-
-      const myArray = ["Rock", "Paper", "Scissors"];
-
-      function computerPlay() {
-        return myArray[~~(Math.random() * myArray.length)];
-      }
-
-      function declareWinner() {
-        if (playerScore === computerScore) {
-          alert(playerScore + "-" + computerScore + "\nTie game!");
-          displayResults(playerScore + "-" + computerScore + "\nTie game!");
-        } else if (playerScore > computerScore) {
-          alert(playerScore + "-" + computerScore + "\nYou win!!");
-          displayResults(playerScore + "-" + computerScore + "\nYou win!!");
-        } else {
-          alert(
-            playerScore +
-              "-" +
-              computerScore +
-              "\nYou lost. Better luck next time!"
-          );
-          displayResults(
-            playerScore +
-              "-" +
-              computerScore +
-              "\nYou lost. Better luck next time!"
-          );
-        }
-      }
-
-      function playRound(playerSelection, computerSelection) {
-        computerSelection = computerPlay().toLowerCase();
-        playerSelection = playerSelection.toLowerCase();
-        if (computerSelection == playerSelection) {
-          alert("Tie game!");
-          displayResults("Tie game!");
-        } else if (
-          (computerSelection == "rock" && playerSelection == "scissors") ||
-          (computerSelection == "scissors" && playerSelection == "paper") ||
-          (computerSelection == "paper" && playerSelection == "rock")
-        ) {
-          alert("You lose! " + computerSelection + " beats " + playerSelection);
-          computerScore = ++computerScore;
-          keepScore();
-          displayResults(
-            "You lose! " + computerSelection + " beats " + playerSelection
-          );
-        } else {
-          alert("You win! " + playerSelection + " beats " + computerSelection);
-          playerScore = ++playerScore;
-          keepScore();
-          displayResults(
-            "You win! " + playerSelection + " beats " + computerSelection
-          );
-        }
-      }
-
-      function keepScore() {
-        let playerScoreBox = document.querySelector("#player-score");
-        let computerScoreBox = document.querySelector("#computer-score");
-
-        playerScoreBox.textContent = playerScore;
-        computerScoreBox.textContent = computerScore;
-      }
-
-      function displayResults(str) {
-        const container = document.querySelector("#container");
-        const p = document.createElement("p");
-
-        p.textContent = str;
-        container.appendChild(p);
-      }
-    </script>
+    <script src="app.js"></script>
   </body>
 </html>
