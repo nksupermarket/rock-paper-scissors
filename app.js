@@ -13,6 +13,15 @@ const returnMainBtn = document.querySelector("#retry-btn");
 const desc = document.querySelector("#desc3");
 const container = document.querySelector("#results-container");
 
+body.addEventListener("click", skipAnime());
+body.addEventListener("keydown", skipAnime());
+
+function skipAnime() {
+  const span = document.querySelectorAll("span");
+
+  span.forEach((span) => span.classList.add("skip"));
+}
+
 function beginningAnimation() {
   fadeIn();
   //need to turn nodelist of spans into an array so we can access last value for ontransitionend
@@ -52,11 +61,17 @@ or else nodelist will be empty */
           desc3Span = Array.from(desc3Span);
 
           desc3Span[desc3Span.length - 1].ontransitionend = () => {
-            setTimeout(function () {
+            const cta = document.querySelector("#cta");
+
+            cta.classList.add("drop-down");
+
+            cta.addEventListener("animationend", () => {
               const gameCtn = document.querySelector("#game-container");
 
-              gameCtn.classList.remove("disappear");
-            }, 500);
+              setTimeout(function () {
+                gameCtn.classList.add("fade-in");
+              }, 300);
+            });
           };
         });
       };
@@ -212,13 +227,14 @@ function declareWinner() {
   endDescSpan = Array.from(endDescSpan);
 
   endDescSpan[endDescSpan.length - 1].ontransitionend = () => {
-    returnMainBtn.animate([{ opacity: 0 }, { opacity: 1 }], {
+    returnMainBtn.classList.add("fade-in");
+    /*returnMainBtn.animate([{ opacity: 0 }, { opacity: 1 }], {
       duration: 00,
       fill: "forwards",
       iterations: 1,
       delay: 0,
       easing: "ease-in",
-    });
+    });*/
   };
 }
 
@@ -232,7 +248,7 @@ function rplContent() {
     main.classList.remove("disappear");
     endAlrt.classList.add("disappear");
     desc.classList.add("animate");
-    returnMainBtn.style.opacity = 0;
+    returnMainBtn.classList.remove("fade-in");
     resetGame();
   });
 }
