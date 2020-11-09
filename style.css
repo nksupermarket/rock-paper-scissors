@@ -9,7 +9,8 @@ body {
 #cta,
 #score-container,
 #score-label,
-#end-desc {
+#end-desc,
+#retry-btn {
   font-family: lacquer, arial, sans-serif;
   text-align: center;
 }
@@ -36,7 +37,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: all 0.4s ease-in;
+  transition: all 0.4s ease;
 }
 .button img {
   width: 150px;
@@ -78,7 +79,21 @@ body {
   margin-bottom: 25px;
 }
 #retry-btn {
+  display: inline-block;
+  padding: 0.8em 1.4em;
+  border-radius: 0.15em;
+  box-sizing: border-box;
+  text-decoration: none;
+  color: #646464;
+  background-color: white;
+  box-shadow: inset 0 -0.6em 0 -0.35em rgba(0, 0, 0, 0.17);
+  position: relative;
   margin-top: 25px;
+  opacity: 0;
+}
+#retry-btn:hover {
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.95);
 }
 #end-alert.disappear,
 .disappear {
@@ -93,4 +108,23 @@ span {
 }
 #results.container.no-transition {
   transition: none;
+}
+#desc1.fade-out,
+#desc2.fade-out,
+#desc3.fade-out,
+.fade-out {
+  animation-name: fade-out;
+  animation-duration: 800ms;
+  animation-timing-function: ease-in;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
