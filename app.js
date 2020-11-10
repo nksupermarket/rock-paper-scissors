@@ -203,11 +203,11 @@ function capitalize(str) {
 
 function displayResults(str) {
   container.animate([{ opacity: 0 }, { opacity: 1 }], {
-    duration: 800,
+    duration: 300,
     fill: "forwards",
     iterations: 1,
     delay: 0,
-    easing: "ease-in",
+    easing: "ease-out",
   });
   container.textContent = str;
 }
@@ -266,11 +266,11 @@ function keepPlayerScore() {
   let playerScoreBox = document.querySelector("#player-score");
 
   playerScoreBox.animate([{ opacity: 0 }, { opacity: 1 }], {
-    duration: 800,
+    duration: 300,
     fill: "forwards",
     iterations: 1,
     delay: 0,
-    easing: "ease-in",
+    easing: "ease-out",
   });
 
   playerScoreBox.textContent = playerScore;
@@ -279,11 +279,11 @@ function keepCpuScore() {
   let computerScoreBox = document.querySelector("#computer-score");
 
   computerScoreBox.animate([{ opacity: 0 }, { opacity: 1 }], {
-    duration: 800,
+    duration: 300,
     fill: "forwards",
     iterations: 1,
     delay: 0,
-    easing: "ease-in",
+    easing: "ease-out",
   });
 
   computerScoreBox.textContent = computerScore;
