@@ -14,3 +14,4 @@ What I learned
 - how to animate words (by splitting each individual character into their own span)
 - how to use .animate()
 - you can use a variable in place of document to select a query
+- can i not add this line
