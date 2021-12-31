@@ -288,4 +288,3 @@ function keepCpuScore() {
 
   computerScoreBox.textContent = computerScore;
 }
-// add this line to see change in github
